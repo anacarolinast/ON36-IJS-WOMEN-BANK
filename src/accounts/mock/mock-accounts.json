@@ -1,0 +1,37 @@
+[
+    {
+      "id": 1,
+      "accountNumber": "032932829402",
+      "balance": 2500,
+      "openingDate": "2024-07-11T00:00:00.000Z",
+      "type": "Current",
+      "status": "Open",
+      "overdraftLimit": 500
+    },
+    {
+      "id": 2,
+      "accountNumber": "449049349203",
+      "balance": 1500,
+      "openingDate": "2024-07-11T00:00:00.000Z",
+      "type": "Saving",
+      "status": "Open",
+      "interestRate": 2.5
+    },
+    {
+      "id": 3,
+      "accountNumber": "123456789",
+      "balance": 2000,
+      "openingDate": "2024-07-24T00:00:00.000Z",
+      "type": "Current",
+      "status": "Open",
+      "overdraftLimit": 1000
+    },
+    {
+      "id": 4,
+      "accountNumber": "9876543210",
+      "balance": 3000,
+      "openingDate": "2024-07-25T00:00:00.000Z",
+      "status": "closed",
+      "interestRate": 3.5
+    }
+  ]
