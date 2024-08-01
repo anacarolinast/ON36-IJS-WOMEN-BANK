@@ -1,0 +1,72 @@
+[
+    {
+      "id": 1,
+      "fullName": "John Doe",
+      "cpf": "123.456.789-00",
+      "address": "Rua Exemplo, 123, Bairro, Cidade, Estado, CEP",
+      "phoneNumber": "+55 11 98765-4321",
+      "accounts": [
+        {
+          "id": 1,
+          "accountNumber": "032932829402",
+          "balance": 1000,
+          "openingDate": "2024-07-11T00:00:00.000Z",
+          "type": "Current",
+          "status": "Open",
+          "overdraftLimit": 500
+        },
+        {
+          "id": 2,
+          "accountNumber": "449049349203",
+          "balance": 1500,
+          "openingDate": "2024-07-11T00:00:00.000Z",
+          "type": "Saving",
+          "status": "Open",
+          "interestRate": 2.5
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "fullName": "Jane Smith",
+      "cpf": "129.456.789-44",
+      "address": "Rua Exemplo, 123, Bairro, Cidade, Estado, CEP",
+      "phoneNumber": "+55 11 98765-4321",
+      "accounts": [
+        {
+          "id": 3,
+          "accountNumber": "123456789",
+          "balance": 2000,
+          "openingDate": "2024-07-24T00:00:00.000Z",
+          "type": "Current",
+          "status": "Open",
+          "overdraftLimit": 1000
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "fullName": "Alice Williams",
+      "cpf": "029.394.593-33",
+      "address": "Rua Exemplo, 123, Bairro, Cidade, Estado, CEP",
+      "phoneNumber": "+55 11 98765-4321",
+      "accounts": [
+        {
+          "id": 4,
+          "accountNumber": "9876543210",
+          "balance": 3000,
+          "openingDate": "2024-07-25T00:00:00.000Z",
+          "status": "closed",
+          "interestRate": 3.5
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "fullName": "João da Silva",
+      "cpf": "123.456.789-00",
+      "address": "Rua Exemplo, 123, Bairro, Cidade, Estado, CEP",
+      "phoneNumber": "+55 11 98765-4321",
+      "accounts": []
+    }
+  ]

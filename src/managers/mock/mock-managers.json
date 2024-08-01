@@ -1,0 +1,58 @@
+[
+    {
+      "id": 1,
+      "fullName": "Alice Johnson",
+      "cpf": "393.395.593-00",
+      "customers": [
+        {
+          "id": 1,
+          "fullName": "John Doe",
+          "cpf": "123.456.789-00",
+          "address": "Rua Exemplo, 123, Bairro, Cidade, Estado, CEP",
+          "phoneNumber": "+55 11 98765-4321",
+          "accounts": [
+            {
+              "id": 1,
+              "accountNumber": "ACC123456",
+              "balance": 1000,
+              "openingDate": "2024-01-15T00:00:00Z",
+              "type": "current",
+              "overdraftLimit": 500
+            },
+            {
+              "id": 2,
+              "accountNumber": "ACC789012",
+              "balance": 1500,
+              "openingDate": "2024-02-20T00:00:00Z",
+              "type": "saving",
+              "interestRate": 2.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "fullName": "Ana Souza",
+      "cpf": "987.654.321-00",
+      "customers": [
+        {
+          "id": 3,
+          "fullName": "Alice Williams",
+          "cpf": "029.394.593-33",
+          "address": "Rua Exemplo, 123, Bairro, Cidade, Estado, CEP",
+          "phoneNumber": "+55 11 98765-4321",
+          "accounts": [
+            {
+              "id": 4,
+              "accountNumber": "9876543210",
+              "balance": 3000,
+              "openingDate": "2024-07-25T00:00:00.000Z",
+              "status": "closed",
+              "interestRate": 3.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
