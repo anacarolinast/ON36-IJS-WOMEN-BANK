@@ -1,15 +1,13 @@
-import { Account } from './interfaces/account.interface';
-import {
-  Injectable,
-  NotFoundException,
-  ConflictException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 import * as fs from 'fs';
 import * as path from 'path';
 import { AccountFactory } from './factories/account.factory';
 import { AccountType } from './enums/account-type.enum';
 import { AccountStatus } from './enums/account-status.enum';
 import { CustomersService } from 'src/customers/customers.service';
+import { Account } from './interfaces/account.interface';
+import { BalanceUpdatedEvent } from './events/balance-updated.event';
 
 @Injectable()
 export class AccountsService {
@@ -18,7 +16,8 @@ export class AccountsService {
 
   constructor(
     private readonly accountFactory: AccountFactory,
-    private readonly customersService: CustomersService 
+    private readonly customersService: CustomersService,
+    private readonly eventEmitter: EventEmitter2,
   ) {
     const accounts = this.readAccounts();
     this.idCounter = accounts.length > 0 ? accounts[accounts.length - 1].id + 1 : 1;
@@ -51,7 +50,6 @@ export class AccountsService {
       console.error(`Error writing accounts: ${error.message}`);
     }
   }
-  
 
   createAccount(
     balance: number,
@@ -143,6 +141,9 @@ export class AccountsService {
     const account = this.findById(id);
     account.balance += amount;
     this.writeAccounts(this.readAccounts());
+  
+    this.eventEmitter.emit('balance.updated', new BalanceUpdatedEvent(account.id, account.balance));
+  
     return account;
   }
 
@@ -150,6 +151,9 @@ export class AccountsService {
     const account = this.findById(id);
     account.balance -= amount;
     this.writeAccounts(this.readAccounts());
+
+    this.eventEmitter.emit('balance.updated', new BalanceUpdatedEvent(account.id, account.balance));
+
     return account;
   }
 

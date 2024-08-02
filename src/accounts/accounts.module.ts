@@ -5,10 +5,12 @@ import { AccountFactory } from './factories/account.factory';
 import { CustomersService } from 'src/customers/customers.service';
 import { PersonModule } from 'src/person/person.module';
 import { ManagersModule } from 'src/managers/managers.module';
+import { BalanceUpdatedListener } from './listeners/balance-updated.listener';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
-  imports: [PersonModule, ManagersModule],
-  providers: [AccountsService, AccountFactory, CustomersService],
+  imports: [PersonModule, ManagersModule, EventEmitterModule.forRoot()],
+  providers: [AccountsService, AccountFactory, CustomersService, BalanceUpdatedListener],
   controllers: [AccountsController],
   exports: [AccountsService]
 })

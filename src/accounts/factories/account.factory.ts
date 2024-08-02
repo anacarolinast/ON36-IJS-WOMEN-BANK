@@ -1,12 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { AccountType } from '../enums/account-type.enum';
-import { Account } from '../interfaces/account.interface';
-import { SavingAccount } from '../entities/saving-account.entity';
-import { AccountStatus } from '../enums/account-status.enum';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 import { CurrentAccount } from '../entities/current-account.entity';
+import { SavingAccount } from '../entities/saving-account.entity'; 
+import { AccountType } from '../enums/account-type.enum'; 
+import { AccountStatus } from '../enums/account-status.enum'; 
+import { Account } from '../interfaces/account.interface'; 
 
 @Injectable()
 export class AccountFactory {
+  constructor(private readonly eventEmitter: EventEmitter2) {}
+
   createAccount(
     id: number,
     accountNumber: string,
@@ -26,8 +29,9 @@ export class AccountFactory {
           balance,
           openingDate,
           status,
-          overdraftLimit,
           customerId,
+          overdraftLimit!,
+          this.eventEmitter,
         );
       case AccountType.Saving:
         return new SavingAccount(
@@ -36,9 +40,12 @@ export class AccountFactory {
           balance,
           openingDate,
           status,
-          interestRate,
           customerId,
+          interestRate!,
+          this.eventEmitter, 
         );
+      default:
+        throw new Error('Invalid account type');
     }
   }
 }
