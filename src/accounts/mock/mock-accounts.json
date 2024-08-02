@@ -1,37 +1,145 @@
 [
-    {
-      "id": 1,
-      "accountNumber": "032932829402",
-      "balance": 2500,
-      "openingDate": "2024-07-11T00:00:00.000Z",
-      "type": "Current",
-      "status": "Open",
-      "overdraftLimit": 500
-    },
-    {
-      "id": 2,
-      "accountNumber": "449049349203",
-      "balance": 1500,
-      "openingDate": "2024-07-11T00:00:00.000Z",
-      "type": "Saving",
-      "status": "Open",
-      "interestRate": 2.5
-    },
-    {
-      "id": 3,
-      "accountNumber": "123456789",
-      "balance": 2000,
-      "openingDate": "2024-07-24T00:00:00.000Z",
-      "type": "Current",
-      "status": "Open",
-      "overdraftLimit": 1000
-    },
-    {
-      "id": 4,
-      "accountNumber": "9876543210",
-      "balance": 3000,
-      "openingDate": "2024-07-25T00:00:00.000Z",
-      "status": "closed",
-      "interestRate": 3.5
-    }
-  ]
+  {
+    "id": 1,
+    "accountNumber": "032932829402",
+    "balance": 2500,
+    "openingDate": "2024-07-11T00:00:00.000Z",
+    "type": "Current",
+    "status": "Open",
+    "overdraftLimit": 500
+  },
+  {
+    "id": 2,
+    "accountNumber": "449049349203",
+    "balance": 1500,
+    "openingDate": "2024-07-11T00:00:00.000Z",
+    "type": "Saving",
+    "status": "Open",
+    "interestRate": 2.5
+  },
+  {
+    "id": 3,
+    "accountNumber": "123456789",
+    "balance": 2000,
+    "openingDate": "2024-07-24T00:00:00.000Z",
+    "type": "Current",
+    "status": "Open",
+    "overdraftLimit": 1000
+  },
+  {
+    "id": 4,
+    "accountNumber": "9876543210",
+    "balance": 3000,
+    "openingDate": "2024-07-25T00:00:00.000Z",
+    "status": "closed",
+    "interestRate": 3.5
+  },
+  {
+    "id": 5,
+    "accountNumber": "461600818254",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:33:27.515Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 6,
+    "accountNumber": "751566026407",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:34:46.663Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 7,
+    "accountNumber": "702060702241",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:35:07.415Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 8,
+    "accountNumber": "889739938126",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:38:31.829Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 9,
+    "accountNumber": "014713683972",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:38:34.235Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 10,
+    "accountNumber": "854073909412",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:43:25.729Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 11,
+    "accountNumber": "194678653364",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:43:26.658Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 12,
+    "accountNumber": "648453390901",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:43:27.776Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 13,
+    "accountNumber": "810671013021",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:44:24.270Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 14,
+    "accountNumber": "827608433710",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:44:25.233Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 15,
+    "accountNumber": "073498971074",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:47:34.525Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  },
+  {
+    "id": 16,
+    "accountNumber": "037751529665",
+    "balance": 1000,
+    "openingDate": "2024-08-02T14:47:35.381Z",
+    "status": "Open",
+    "customerId": 1,
+    "type": "Saving"
+  }
+]

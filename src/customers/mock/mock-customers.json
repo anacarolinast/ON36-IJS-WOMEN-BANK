@@ -1,72 +1,24 @@
 [
-    {
-      "id": 1,
-      "fullName": "John Doe",
-      "cpf": "123.456.789-00",
-      "address": "Rua Exemplo, 123, Bairro, Cidade, Estado, CEP",
-      "phoneNumber": "+55 11 98765-4321",
-      "accounts": [
-        {
-          "id": 1,
-          "accountNumber": "032932829402",
-          "balance": 1000,
-          "openingDate": "2024-07-11T00:00:00.000Z",
-          "type": "Current",
-          "status": "Open",
-          "overdraftLimit": 500
-        },
-        {
-          "id": 2,
-          "accountNumber": "449049349203",
-          "balance": 1500,
-          "openingDate": "2024-07-11T00:00:00.000Z",
-          "type": "Saving",
-          "status": "Open",
-          "interestRate": 2.5
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "fullName": "Jane Smith",
-      "cpf": "129.456.789-44",
-      "address": "Rua Exemplo, 123, Bairro, Cidade, Estado, CEP",
-      "phoneNumber": "+55 11 98765-4321",
-      "accounts": [
-        {
-          "id": 3,
-          "accountNumber": "123456789",
-          "balance": 2000,
-          "openingDate": "2024-07-24T00:00:00.000Z",
-          "type": "Current",
-          "status": "Open",
-          "overdraftLimit": 1000
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "fullName": "Alice Williams",
-      "cpf": "029.394.593-33",
-      "address": "Rua Exemplo, 123, Bairro, Cidade, Estado, CEP",
-      "phoneNumber": "+55 11 98765-4321",
-      "accounts": [
-        {
-          "id": 4,
-          "accountNumber": "9876543210",
-          "balance": 3000,
-          "openingDate": "2024-07-25T00:00:00.000Z",
-          "status": "closed",
-          "interestRate": 3.5
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "fullName": "João da Silva",
-      "cpf": "123.456.789-00",
-      "address": "Rua Exemplo, 123, Bairro, Cidade, Estado, CEP",
-      "phoneNumber": "+55 11 98765-4321",
-      "accounts": []
-    }
-  ]
+  {
+    "id": 5,
+    "fullName": "João da Silva",
+    "cpf": "12345678900",
+    "birthOfDate": "1990-01-01T00:00:00.000Z",
+    "email": "joao.silva@example.com",
+    "phoneNumber": "11987654321",
+    "address": "Rua Exemplo, 123, São Paulo, SP",
+    "managerId": 1,
+    "accounts": []
+  },
+  {
+    "id": 6,
+    "fullName": "Maria Oliveira",
+    "cpf": "98765432100",
+    "birthOfDate": "1985-05-15T00:00:00.000Z",
+    "email": "maria.oliveira@example.com",
+    "phoneNumber": "11912345678",
+    "address": "Avenida Exemplo, 456, Rio de Janeiro, RJ",
+    "managerId": 1,
+    "accounts": []
+  }
+]

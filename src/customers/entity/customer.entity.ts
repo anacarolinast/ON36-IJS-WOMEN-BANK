@@ -1,55 +1,17 @@
-import {
-    AccountStatus,
-    BaseAccount,
-  } from 'src/accounts/entities/base-account.entity';
-  import { AccountsService } from 'src/accounts/accounts.service';
-  import { AccountType } from 'src/accounts/entities/base-account.entity';
-  import { CreateCurrentAccountDto } from 'src/accounts/dto/create-current-account-dto';
-  import { CreateSavingAccountDto } from 'src/accounts/dto/create-saving-account.dto';
-  import { UpdateAccountTypeDto } from 'src/accounts/dto/update-type-account-dto';  
-  import { UpdateAccountStatusDto } from 'src/accounts/dto/update-status-account-dto'; 
-  
-  export class Customer {
+import { Account } from "src/accounts/interfaces/account.interface";
+import { Person } from "src/person/interfaces/person.interface";
+
+export class Customer implements Person {
     constructor(
-      private readonly accountsService: AccountsService,
       public id: number,
       public fullName: string,
       public cpf: string,
-      public address: string,
+      public birthOfDate: Date,
+      public email: string,
       public phoneNumber: string,
-      public accounts: BaseAccount[] = [],
+      public address: string,
+      public managerId: number,
+      public accounts: Account[] = [],
     ) {}
-  
-    async openCurrentAccount(dto: CreateCurrentAccountDto): Promise<BaseAccount> {
-      return this.accountsService.createCurrentAccount(dto);
-    }
-  
-    async openSavingAccount(dto: CreateSavingAccountDto): Promise<BaseAccount> {
-      return this.accountsService.createSavingAccount(dto);
-    }
-  
-    async closeAccount(
-      accountId: number,
-      newStatus: AccountStatus,
-    ): Promise<void> {
-      const closeAccountDto: UpdateAccountStatusDto = {
-        customerId: this.id,
-        accountId: accountId,
-        newStatus: newStatus,
-      };
-      await this.accountsService.updateAccountStatus(closeAccountDto);
-    }
-  
-    async updateAccountType(
-      accountId: number,
-      newType: AccountType,
-    ): Promise<void> {
-      const updateAccountTypeDto: UpdateAccountTypeDto = {
-        customerId: this.id,
-        accountId: accountId,
-        newType: newType,
-      };
-      await this.accountsService.updateAccountType(updateAccountTypeDto);
-    }
   }
   

@@ -1,11 +1,14 @@
-import { Customer } from "src/customers/entity/customer.entity";
+import { Person } from "src/person/interfaces/person.interface";
 
-export class Manager {
+export class Manager implements Person {
     constructor(
         public id: number,
         public fullName: string,
         public cpf: string,
-        public customers: Customer[] = [],
+        public birthOfDate: Date,
+        public email: string,
+        public phoneNumber: string,
+        public address: string,
+        public customers: number[] = []
     ) {}
-    
 }

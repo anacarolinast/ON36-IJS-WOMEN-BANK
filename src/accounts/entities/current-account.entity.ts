@@ -1,33 +1,17 @@
-import { AccountStatus, AccountType, BaseAccount } from "./base-account.entity";
+import { AccountStatus } from '../enums/account-status.enum';
+import { AccountType } from '../enums/account-type.enum';
+import { Account } from '../interfaces/account.interface';
 
-export class CurrentAccount extends BaseAccount {
-    constructor(
-        id: number,
-        accountNumber: string,
-        balance: number = 0,
-        openingDate: Date,
-        customerId: number,
-        public overdraftLimit: number
-    ) {
-        super(id, accountNumber, balance, openingDate, AccountType.CURRENT, AccountStatus.OPEN, customerId)
-    }
+export class CurrentAccount implements Account {
+  type = AccountType.Current;
 
-    deposit(amount: number): void {
-        this.balance += amount;
-      }
-    
-      cashOut(amount: number): void {
-        if (this.balance + this.overdraftLimit < amount) {
-          throw new Error("Insufficient funds including overdraft.");
-        }
-        this.balance -= amount;
-      }
-    
-      payBills(amount: number): void {
-        this.cashOut(amount);
-      }
-    
-      checkBalance(): number {
-        return this.balance;
-      }
+  constructor(
+    public id: number,
+    public accountNumber: string,
+    public balance: number,
+    public openingDate: Date,
+    public status: AccountStatus.Open,
+    public overdraftLimit: number,
+    public customerId: number,
+  ) {}
 }
