@@ -1,20 +1,21 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Manager } from './entity/manager.entity';
-import { CreateManagerDto } from './dto/manager.dto';
+import { PersonFactory } from '../person/factories/person.factory';
+import { PersonType } from './../person/enums/person.enum';
 import * as fs from 'fs';
 import * as path from 'path';
-import { CustomersService } from 'src/customers/customers.service';
 
 @Injectable()
 export class ManagersService {
-  private readonly filePath = path.resolve('src/managers/mock/mock-managers.json');
+  private readonly filePath = path.resolve(
+    'src/managers/mock/mock-managers.json',
+  );
   private idCounter: number;
 
-  constructor(
-    private readonly customersService: CustomersService,
-  ) {
+  constructor(private readonly personFactory: PersonFactory) {
     const managers = this.readManagers();
-    this.idCounter = managers.length > 0 ? managers[managers.length - 1].id + 1 : 1;
+    this.idCounter =
+      managers.length > 0 ? managers[managers.length - 1].id + 1 : 1;
     console.log(`Initialized ID Counter: ${this.idCounter}`);
   }
 
@@ -36,95 +37,80 @@ export class ManagersService {
 
   private writeManagers(managers: Manager[]): void {
     try {
-      fs.writeFileSync(this.filePath, JSON.stringify(managers, null, 2), 'utf8');
+      fs.writeFileSync(
+        this.filePath,
+        JSON.stringify(managers, null, 2),
+        'utf8',
+      );
       console.log('Managers written to file:', managers);
     } catch (error) {
       console.error(`Error writing managers: ${error.message}`);
     }
   }
 
+  updateManager(updatedManager: Manager): void {
+    const managers = this.readManagers();
+    const index = managers.findIndex(
+      (manager) => manager.id === updatedManager.id,
+    );
+    if (index === -1) {
+      throw new NotFoundException(
+        `Customer with ID ${updatedManager.id} not found`,
+      );
+    }
+    managers[index] = updatedManager;
+    this.writeManagers(managers);
+  }
+
   findById(id: number): Manager {
     const listOfManagers = this.readManagers();
-    const manager = listOfManagers.find(m => m.id === id);
+    const manager = listOfManagers.find((m) => m.id === id);
     if (!manager) {
       throw new NotFoundException(`Manager with id ${id} not found`);
     }
     return manager;
   }
 
-  createManager(createManagerDto: CreateManagerDto): Manager {
-    const listOfManagers = this.readManagers();
-    const { fullName, cpf } = createManagerDto;
-
-    const newManager = new Manager(
-      this.idCounter++, 
-      fullName, 
-      cpf
-    );
-
-    listOfManagers.push(newManager);
-    this.writeManagers(listOfManagers);
-
-    console.log(`Manager created: ${newManager}`);
-
-    return newManager;
-  }
-
   findAll(): Manager[] {
     return this.readManagers();
   }
 
-  removeManager(id: number): void {
-    const listOfManagers = this.readManagers();
-    const indexOfManager = listOfManagers.findIndex(manager => manager.id === id);
+  createManager(
+    fullName: string,
+    cpf: string,
+    birthOfDate: Date,
+    email: string,
+    phoneNumber: string,
+    address: string,
+  ): Manager {
+    const managers = this.readManagers();
 
-    if (indexOfManager < 0) {
+    const newManager = this.personFactory.createPerson(
+      PersonType.Manager,
+      this.idCounter++,
+      fullName,
+      cpf,
+      birthOfDate,
+      email,
+      phoneNumber,
+      address,
+    ) as Manager;
+
+    managers.push(newManager);
+    this.writeManagers(managers);
+
+    return newManager;
+  }
+
+  removeManager(id: number): void {
+    let managers = this.readManagers();
+    const managerIndex = managers.findIndex((m) => m.id === id);
+
+    if (managerIndex === -1) {
       throw new NotFoundException(`Manager with id ${id} not found`);
     }
 
-    listOfManagers.splice(indexOfManager, 1);
-    this.writeManagers(listOfManagers);
-  }
-
-  associateCustomerToManager(managerId: number, customerId: number): void {
-    const listOfManagers = this.readManagers();
-    const manager = listOfManagers.find(m => m.id === managerId);
-
-    if (!manager) {
-      throw new NotFoundException(`Manager with id ${managerId} not found`);
-    }
-
-    const customer = this.customersService.findById(customerId);
-
-    if (!customer) {
-      throw new NotFoundException(`Customer with id ${customerId} not found`);
-    }
-
-    if (!manager.customers.find(c => c.id === customerId)) {
-      manager.customers.push(customer);
-      this.writeManagers(listOfManagers);
-      console.log(`Customer with id ${customerId} associated with manager with id ${managerId}`);
-    } else {
-      console.log(`Customer with id ${customerId} is already associated with manager with id ${managerId}`);
-    }
-  }
-
-  dissociateCustomerFromManager(managerId: number, customerId: number): void {
-    const listOfManagers = this.readManagers();
-    const manager = listOfManagers.find(m => m.id === managerId);
-
-    if (!manager) {
-      throw new NotFoundException(`Manager with id ${managerId} not found`);
-    }
-
-    const customerIndex = manager.customers.findIndex(c => c.id === customerId);
-
-    if (customerIndex === -1) {
-      throw new NotFoundException(`Customer with id ${customerId} is not associated with manager with id ${managerId}`);
-    }
-
-    manager.customers.splice(customerIndex, 1);
-    this.writeManagers(listOfManagers);
-    console.log(`Customer with id ${customerId} dissociated from manager with id ${managerId}`);
+    managers = managers.filter((m) => m.id !== id);
+    this.writeManagers(managers);
   }
 }

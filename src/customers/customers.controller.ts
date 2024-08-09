@@ -10,17 +10,35 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
   import { CustomersService } from './customers.service';
-  import { CreateCustomerDto } from './dto/customer.dto';
   import { Customer } from './entity/customer.entity';
   
   @Controller('customers')
   export class CustomersController {
       constructor(private readonly customersService: CustomersService) {}
-      
-      @Post()
-      createCustomer(@Body() createCustomerDto: CreateCustomerDto): Customer {
-          return this.customersService.createCustomer(createCustomerDto);
-      }
+
+      @Post(':managerId')
+    createCustomer(
+        @Param('managerId', ParseIntPipe) managerId: number,
+        @Body() createCustomerDto: {
+            fullName: string;
+            cpf: string;
+            birthOfDate: Date;
+            email: string;
+            phoneNumber: string;
+            address: string;
+        }
+    ): Customer {
+        const { fullName, cpf, birthOfDate, email, phoneNumber, address } = createCustomerDto;
+        return this.customersService.createCustomer(
+            fullName,
+            cpf,
+            birthOfDate,
+            email,
+            phoneNumber,
+            address,
+            managerId
+        );
+    }
       
       @Get()
       findAll(): Customer[] {

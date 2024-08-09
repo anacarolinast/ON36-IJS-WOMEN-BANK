@@ -10,17 +10,29 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
     import { ManagersService } from './managers.service';
-    import { CreateManagerDto } from './dto/manager.dto';
     import { Manager } from './entity/manager.entity';
-import { Customer } from 'src/customers/entity/customer.entity';
 
 @Controller('managers')
 export class ManagersController {
     constructor(private readonly managersService: ManagersService) {}
 
     @Post()
-    createManager(@Body() createManagerDto: CreateManagerDto): Manager {
-        return this.managersService.createManager(createManagerDto);
+    createManager(
+      @Body('fullName') fullName: string,
+      @Body('cpf') cpf: string,
+      @Body('birthOfDate') birthOfDate: Date,
+      @Body('email') email: string,
+      @Body('phoneNumber') phoneNumber: string,
+      @Body('address') address: string,
+    ): Manager {
+      return this.managersService.createManager(
+        fullName,
+        cpf,
+        birthOfDate,
+        email,
+        phoneNumber,
+        address,
+      );
     }
 
     @Get()
@@ -37,20 +49,4 @@ export class ManagersController {
     removeManager(@Param('id', ParseIntPipe) id: number): void {
         return this.managersService.removeManager(id);
     }
-
-    @Post(':managerId/customers/:customerId')
-    associateCustomerToManager(
-    @Param('managerId', ParseIntPipe) managerId: number,
-    @Param('customerId', ParseIntPipe) customerId: number
-  ): void {
-    return this.managersService.associateCustomerToManager(managerId, customerId);
-  }
-
-  @Delete(':managerId/customers/:customerId')
-  dissociateCustomerFromManager(
-    @Param('managerId', ParseIntPipe) managerId: number,
-    @Param('customerId', ParseIntPipe) customerId: number
-  ): void {
-    return this.managersService.dissociateCustomerFromManager(managerId, customerId);
-  }
 }

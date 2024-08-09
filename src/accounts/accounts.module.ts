@@ -1,12 +1,17 @@
 import { Module } from '@nestjs/common';
-import { AccountsController } from './accounts.controller';
 import { AccountsService } from './accounts.service';
-import { CustomersModule } from 'src/customers/customers.module';
+import { AccountsController } from './accounts.controller';
+import { AccountFactory } from './factories/account.factory';
+import { CustomersService } from 'src/customers/customers.service';
+import { PersonModule } from 'src/person/person.module';
+import { ManagersModule } from 'src/managers/managers.module';
+import { BalanceUpdatedListener } from './listeners/balance-updated.listener';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
-  imports: [CustomersModule],
+  imports: [PersonModule, ManagersModule, EventEmitterModule.forRoot()],
+  providers: [AccountsService, AccountFactory, CustomersService, BalanceUpdatedListener],
   controllers: [AccountsController],
-  providers: [AccountsService],
-  exports: [AccountsService],
+  exports: [AccountsService]
 })
 export class AccountsModule {}
