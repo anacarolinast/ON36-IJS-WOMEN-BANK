@@ -1,4 +1,5 @@
 import { Account } from 'src/accounts/domain/account.interface'; 
+import { Address } from 'src/person/domain/address.interface';
 import { Person } from 'src/person/domain/person.interface';
 
 export class Customer implements Person {
@@ -9,7 +10,7 @@ export class Customer implements Person {
     public birthOfDate: Date,
     public email: string,
     public phoneNumber: string,
-    public address: string,
+    public address: Address,
     public managerId: number,
     public accounts: Account[] = [],
   ) {}

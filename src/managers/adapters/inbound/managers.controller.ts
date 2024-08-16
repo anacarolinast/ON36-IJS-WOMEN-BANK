@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { ManagersService } from 'src/managers/application/managers.service';
 import { Manager } from 'src/managers/domain/manager.entity';
+import { Address } from 'src/person/domain/address.interface';
 
 @Controller('managers')
 export class ManagersController {
@@ -24,11 +25,11 @@ export class ManagersController {
       birthOfDate: string;
       email: string;
       phoneNumber: string;
-      address: string;
+      cep: string; 
     },
   ): Promise<Manager> {
-    const { fullName, cpf, birthOfDate, email, phoneNumber, address } = body;
-    
+    const { fullName, cpf, birthOfDate, email, phoneNumber, cep } = body;
+
     try {
       return await this.managersService.createManager(
         fullName,
@@ -36,7 +37,7 @@ export class ManagersController {
         new Date(birthOfDate),
         email,
         phoneNumber,
-        address,
+        cep,
       );
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);

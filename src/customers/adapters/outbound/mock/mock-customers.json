@@ -49,5 +49,22 @@
     "address": "Rua das Flores, 123, São Paulo, SP",
     "managerId": 1,
     "accounts": []
+  },
+  {
+    "id": 8,
+    "fullName": "João Silva",
+    "cpf": "12345678901",
+    "birthOfDate": "1985-10-15T00:00:00.000Z",
+    "email": "joao.silva@example.com",
+    "phoneNumber": "+5511999999999",
+    "address": {
+      "cep": "01001000",
+      "state": "SP",
+      "city": "São Paulo",
+      "district": "Sé",
+      "address": "Praça da Sé"
+    },
+    "managerId": 1,
+    "accounts": []
   }
 ]

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AccountsService } from './application/accounts.service';
 import { AccountsController } from './adapters/inbound/accounts.controller'; 
 import { AccountFactory } from './domain/account.factory';
-import { CustomersModule } from 'src/customers/customers.module'; // Certifique-se de que CustomersModule está importado
+import { CustomersModule } from 'src/customers/customers.module';
 import { ManagersModule } from 'src/managers/managers.module';
 import { BalanceUpdatedListener } from './adapters/inbound/balance-updated.listener'; 
 import { EventEmitterModule } from '@nestjs/event-emitter';

@@ -1,3 +1,4 @@
+import { Address } from 'src/person/domain/address.interface';
 import { Person } from 'src/person/domain/person.interface';
 
 export class Manager implements Person {
@@ -8,7 +9,7 @@ export class Manager implements Person {
     public birthOfDate: Date,
     public email: string,
     public phoneNumber: string,
-    public address: string,
+    public address: Address,
     public customers: number[] = [],
   ) {}
 }

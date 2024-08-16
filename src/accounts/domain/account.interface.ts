@@ -9,5 +9,4 @@ export interface Account {
   type: AccountType;
   status: AccountStatus;
   customerId: number;
-  socialCurrencyBalance: number;
 }

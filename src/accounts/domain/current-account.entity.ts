@@ -16,7 +16,6 @@ export class CurrentAccount implements Account {
     public overdraftLimit: number,
     public customerId: number,
     public eventEmitter: EventEmitter2,
-    public socialCurrencyBalance: number
   ) {}
 
   private notifyBalanceChange() {

@@ -21,7 +21,7 @@
       "_removeListener": false,
       "verboseMemoryLeak": false
     },
-    "socialCurrencyBalance": 0,
+    "socialCurrencyBalance": 10,
     "type": "Current"
   }
 ]

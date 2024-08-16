@@ -16,7 +16,6 @@ export class SavingAccount implements Account {
     public interestRate: number,
     public customerId: number,
     public eventEmitter: EventEmitter2,
-    public socialCurrencyBalance: number
   ) {}
 
   private notifyBalanceChange() {

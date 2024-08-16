@@ -7,12 +7,10 @@ import { CustomersService } from 'src/customers/application/customers.service';
 import { AccountsRepository } from '../adapters/outbound/accounts.repository';
 import { BalanceUpdatedEvent } from '../domain/balance-updated.event';
 import { Account } from '../domain/account.interface'; 
-import axios from 'axios';
 
 @Injectable()
 export class AccountsService {
   private idCounter: number;
-  private readonly conversionRate: number = 0.1; // Taxa de conversão SocialCoin para BRL
 
   constructor(
     private readonly accountRepository: AccountsRepository,
@@ -131,36 +129,5 @@ export class AccountsService {
 
   async payBills(id: number, amount: number): Promise<Account> {
     return this.cashOut(id, amount);
-  }
-
-  async addSocialCoin(id: number, amount: number): Promise<Account> {
-    const account = await this.findById(id);
-    account.socialCurrencyBalance = (account.socialCurrencyBalance || 0) + amount;
-    await this.accountRepository.save(account);
-    return account;
-  }
-
-  async convertSocialCoinToReal(id: number, socialCoinAmount: number): Promise<Account> {
-    const account = await this.findById(id);
-
-    if (socialCoinAmount < 0) {
-      throw new ConflictException('Amount must be positive');
-    }
-    if ((account.socialCurrencyBalance || 0) < socialCoinAmount) {
-      throw new ConflictException('Insufficient social coin balance');
-    }
-
-    const realAmount = socialCoinAmount * this.conversionRate;
-
-    account.balance += realAmount;
-    account.socialCurrencyBalance -= socialCoinAmount;
-    await this.accountRepository.save(account);
-
-    this.eventEmitter.emit(
-      'balance.updated',
-      new BalanceUpdatedEvent(account.id, account.balance),
-    );
-
-    return account;
   }
 }

@@ -86,22 +86,4 @@ export class AccountsController {
   ): Promise<void> {
     return this.accountsService.updateTypeAccount(id, type);
   }
-
-  @Patch(':id/socialcoin/add')
-  @HttpCode(HttpStatus.OK)
-  async addSocialCoin(
-    @Param('id', ParseIntPipe) id: number,
-    @Body('amount') amount: number,
-  ): Promise<Account> {
-    return this.accountsService.addSocialCoin(id, amount);
-  }
-
-  @Patch(':id/socialcoin/convert')
-  @HttpCode(HttpStatus.OK)
-  async convertSocialCoinToReal(
-    @Param('id', ParseIntPipe) id: number,
-    @Body('socialCoinAmount') socialCoinAmount: number,
-  ): Promise<Account> {
-    return this.accountsService.convertSocialCoinToReal(id, socialCoinAmount);
-  }
 }

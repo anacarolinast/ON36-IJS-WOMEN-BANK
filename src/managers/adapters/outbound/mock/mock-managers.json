@@ -6,13 +6,30 @@
     "customers": [
       5,
       6,
-      7
+      7,
+      8
     ]
   },
   {
     "id": 3,
     "fullName": "Ana Souza",
     "cpf": "987.654.321-00",
+    "customers": []
+  },
+  {
+    "id": 4,
+    "fullName": "Maria Oliveira",
+    "cpf": "98765432100",
+    "birthOfDate": "1978-05-22T00:00:00.000Z",
+    "email": "maria.oliveira@example.com",
+    "phoneNumber": "+5511988888888",
+    "address": {
+      "cep": "02001000",
+      "state": "SP",
+      "city": "São Paulo",
+      "district": "Santana",
+      "address": "Parque Anhembi"
+    },
     "customers": []
   }
 ]

@@ -4,6 +4,8 @@ import { CustomersRepository } from '../adapters/outbound/customers.repository';
 import { PersonFactory } from 'src/person/domain/person.factory'; 
 import { PersonType } from 'src/person/domain/person.enum';
 import { ManagersService } from 'src/managers/application/managers.service';
+import { Address } from 'src/person/domain/address.interface';
+import { fetchAddressByCep } from 'src/utils/address.util'; // Importa o utilitário para obter o endereço
 
 @Injectable()
 export class CustomersService {
@@ -24,7 +26,7 @@ export class CustomersService {
   async findById(id: number): Promise<Customer> {
     const customer = await this.customerRepository.findById(id);
     if (!customer) {
-      throw new NotFoundException(`Customer with id ${id} not found`);
+      throw new NotFoundException(`Customer with ID ${id} not found`);
     }
     return customer;
   }
@@ -39,14 +41,15 @@ export class CustomersService {
     birthOfDate: Date,
     email: string,
     phoneNumber: string,
-    address: string,
+    cep: string,
     managerId: number,
   ): Promise<Customer> {
     const manager = await this.managersService.findById(managerId);
-
     if (!manager) {
       throw new NotFoundException(`Manager with ID ${managerId} not found`);
     }
+
+    const address: Address = await fetchAddressByCep(cep);
 
     const newCustomer = this.personFactory.createPerson(
       PersonType.Customer,

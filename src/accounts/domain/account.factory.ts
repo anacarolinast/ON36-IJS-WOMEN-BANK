@@ -20,7 +20,6 @@ export class AccountFactory {
     customerId: number,
     overdraftLimit?: number,
     interestRate?: number,
-    socialCurrencyBalance: number = 0,
   ): Account {
     switch (type) {
       case AccountType.Current:
@@ -33,7 +32,6 @@ export class AccountFactory {
           customerId,
           overdraftLimit!,
           this.eventEmitter,
-          socialCurrencyBalance
         );
       case AccountType.Saving:
         return new SavingAccount(
@@ -45,7 +43,6 @@ export class AccountFactory {
           customerId,
           interestRate!,
           this.eventEmitter,
-          socialCurrencyBalance
         );
       default:
         throw new Error('Invalid account type');

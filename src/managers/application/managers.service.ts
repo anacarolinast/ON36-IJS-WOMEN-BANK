@@ -3,6 +3,8 @@ import { Manager } from '../domain/manager.entity';
 import { PersonFactory } from 'src/person/domain/person.factory'; 
 import { PersonType } from 'src/person/domain/person.enum';
 import { ManagersRepository } from '../adapters/outbound/managers.repository'; 
+import { Address } from 'src/person/domain/address.interface';
+import { fetchAddressByCep } from 'src/utils/address.util';
 
 @Injectable()
 export class ManagersService {
@@ -29,9 +31,10 @@ export class ManagersService {
     birthOfDate: Date,
     email: string,
     phoneNumber: string,
-    address: string,
+    cep: string,
   ): Promise<Manager> {
     const nextId = this.managersRepository.getNextId();
+    const address = await fetchAddressByCep(cep);
 
     const newManager = this.personFactory.createPerson(
       PersonType.Manager,

@@ -3,6 +3,7 @@ import { Person } from '../domain/person.interface';
 import { PersonType } from '../domain/person.enum';
 import { Customer } from 'src/customers/domain/customer.entity'; 
 import { Manager } from 'src/managers/domain/manager.entity'; 
+import { Address } from './address.interface';
 
 @Injectable()
 export class PersonFactory {
@@ -14,7 +15,7 @@ export class PersonFactory {
     birthOfDate: Date,
     email: string,
     phoneNumber: string,
-    address: string,
+    address: Address,
     managerId?: number,
   ): Person {
     switch (type) {
