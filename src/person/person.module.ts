@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { PersonController } from './person.controller';
-import { PersonService } from './person.service';
-import { PersonFactory } from './factories/person.factory';
+import { PersonController } from './adapters/inbound/person.controller';
+import { PersonService } from './application/person.service';
+import { PersonFactory } from './domain/person.factory'; 
 
 @Module({
   controllers: [PersonController],

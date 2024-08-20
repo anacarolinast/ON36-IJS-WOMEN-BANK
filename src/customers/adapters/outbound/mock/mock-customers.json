@@ -1,0 +1,70 @@
+[
+  {
+    "id": 5,
+    "fullName": "João da Silva",
+    "cpf": "12345678900",
+    "birthOfDate": "1990-01-01T00:00:00.000Z",
+    "email": "joao.silva@example.com",
+    "phoneNumber": "11987654321",
+    "address": "Rua Exemplo, 123, São Paulo, SP",
+    "managerId": 1,
+    "accounts": []
+  },
+  {
+    "id": 6,
+    "fullName": "Maria Oliveira",
+    "cpf": "98765432100",
+    "birthOfDate": "1985-05-15T00:00:00.000Z",
+    "email": "maria.oliveira@example.com",
+    "phoneNumber": "11912345678",
+    "address": "Avenida Exemplo, 456, Rio de Janeiro, RJ",
+    "managerId": 1,
+    "accounts": [
+      {},
+      {
+        "id": 2,
+        "accountNumber": "039537322425",
+        "balance": 100,
+        "openingDate": "2024-08-15T19:03:41.980Z",
+        "status": "Open",
+        "overdraftLimit": 6,
+        "eventEmitter": {
+          "_events": {},
+          "_newListener": false,
+          "_removeListener": false,
+          "verboseMemoryLeak": false
+        },
+        "socialCurrencyBalance": 0,
+        "type": "Current"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "fullName": "João Silva",
+    "cpf": "12345678900",
+    "birthOfDate": "1985-06-15T00:00:00.000Z",
+    "email": "joao.silva@example.com",
+    "phoneNumber": "+5511999998888",
+    "address": "Rua das Flores, 123, São Paulo, SP",
+    "managerId": 1,
+    "accounts": []
+  },
+  {
+    "id": 8,
+    "fullName": "João Silva",
+    "cpf": "12345678901",
+    "birthOfDate": "1985-10-15T00:00:00.000Z",
+    "email": "joao.silva@example.com",
+    "phoneNumber": "+5511999999999",
+    "address": {
+      "cep": "01001000",
+      "state": "SP",
+      "city": "São Paulo",
+      "district": "Sé",
+      "address": "Praça da Sé"
+    },
+    "managerId": 1,
+    "accounts": []
+  }
+]

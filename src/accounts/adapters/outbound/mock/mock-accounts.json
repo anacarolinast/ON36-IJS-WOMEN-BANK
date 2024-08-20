@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "accountNumber": "032932829402",
+    "balance": 2500,
+    "openingDate": "2024-07-11T00:00:00.000Z",
+    "type": "Current",
+    "status": "Open",
+    "overdraftLimit": 500
+  },
+  {
+    "id": 2,
+    "accountNumber": "039537322425",
+    "balance": 137.345,
+    "openingDate": "2024-08-15T19:03:41.980Z",
+    "status": "Open",
+    "overdraftLimit": 6,
+    "eventEmitter": {
+      "_events": {},
+      "_newListener": false,
+      "_removeListener": false,
+      "verboseMemoryLeak": false
+    },
+    "socialCurrencyBalance": 10,
+    "type": "Current"
+  }
+]
