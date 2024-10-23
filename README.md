@@ -1,4 +1,4 @@
-# WOM?N BANK - Banco Comunitário para Mulheres Empreendedoras
+# WOM?N BANK: Banco Comunitário para Mulheres Empreendedoras
 
 ## Visão Geral
 
